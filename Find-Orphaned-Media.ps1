@@ -1,15 +1,26 @@
-# This script scans a specified vault directory for orphaned media files (images, videos, etc.) that are not linked in any Markdown files.
-# It generates a report of these orphaned files and optionally moves them to an archive directory.
+<#
+    Script: Find-Orphaned-Media.ps1
+    Description: Scans an Obsidian vault for orphaned media files and optionally moves them to an archive folder. 
+                 Designed for large vaults and optimized for PowerShell 7+.
 
+    Author: John Kyle
+    Created: 2025-05-20
+    Version: 1.0.0
+    License: MIT (see LICENSE file for details)
+    GitHub: https://github.com/johnkyle4/obsidian-media-audit
+#>
+<#
+    This script scans a specified vault directory for orphaned media files (images, videos, etc.) that are not linked in any Markdown files.
+    It generates a report of these orphaned files and optionally moves them to an archive directory.
+    Usage:
+    1. Generate a Report Only (No Moving):
+       pwsh -File .\Find-Orphaned-Media.ps1 -VaultPath "C:\Path\To\Vault" -OutputPath "C:\Path\To\Output\orphans.csv"
+    2. Generate a Report and Move Orphans:
+       pwsh -File .\Find-Orphaned-Media.ps1 -VaultPath "C:\Path\To\Vault" -OutputPath "C:\Path\To\Output\orphans.csv" -ArchivePath "C:\Path\To\Vault\_archived_orphans" -MoveOrphans
+    3. Specify File Extensions to Check:
+       pwsh -File .\Find-Orphaned-Media.ps1 -VaultPath "C:\Path\To\Vault" -OutputPath "C:\Path\To\Output\orphans.csv" -Extensions "jpg", "png", "mp4"
+#>
 
-
-# Usage:
-# 1. Generate a Report Only (No Moving):
-# pwsh -File .\Find-Orphaned-Media.ps1 -VaultPath "C:\Path\To\Vault" -OutputPath "C:\Path\To\Output\orphans.csv"
-# 2. Generate a Report and Move Orphans:
-# pwsh -File .\Find-Orphaned-Media.ps1 -VaultPath "C:\Path\To\Vault" -OutputPath "C:\Path\To\Output\orphans.csv" -ArchivePath "C:\Path\To\Vault\_archived_orphans" -MoveOrphans
-# 3. Specify File Extensions to Check:
-# pwsh -File .\Find-Orphaned-Media.ps1 -VaultPath "C:\Path\To\Vault" -OutputPath "C:\Path\To\Output\orphans.csv" -Extensions "jpg", "png", "mp4"   
 param (
     [string]$VaultPath = ".",
     [string]$OutputPath = ".\orphaned_media.csv",
