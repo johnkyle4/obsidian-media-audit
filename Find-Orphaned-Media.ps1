@@ -1,6 +1,8 @@
 # This script scans a specified vault directory for orphaned media files (images, videos, etc.) that are not linked in any Markdown files.
 # It generates a report of these orphaned files and optionally moves them to an archive directory.
 
+
+
 # Usage:
 # 1. Generate a Report Only (No Moving):
 # pwsh -File .\Find-Orphaned-Media.ps1 -VaultPath "C:\Path\To\Vault" -OutputPath "C:\Path\To\Output\orphans.csv"
