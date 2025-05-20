@@ -74,7 +74,8 @@ foreach ($media in $mediaFiles) {
             Path         = $media.FullName
             Extension    = $media.Extension
             LastModified = $media.LastWriteTime
-        }
+            FileSizeKB   = [math]::Round($media.Length / 1KB, 1)
+                }
     }
 }
 
